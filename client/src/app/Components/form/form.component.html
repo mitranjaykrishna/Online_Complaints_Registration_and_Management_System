@@ -1,0 +1,47 @@
+<div class="d-flex justify-content-center m-5">
+  <h1>Report Here</h1>
+</div>
+<form #userPost="ngForm" (ngSubmit)="onSubmit(userPost)">
+  <div class="input-group mb-3">
+    <span class="input-group-text">Full Name</span>
+    <input
+      type="text"
+      aria-label="First name"
+      name="name"
+      #name="ngModel"
+      [(ngModel)]="complaint.name"
+      class="form-control"
+      ngModel
+    />
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label"
+      >Email address</label
+    >
+    <input
+      name="email"
+      type="email"
+      class="form-control"
+      id="exampleFormControlInput1"
+      placeholder="name@example.com"
+      #email="ngModel"
+      [(ngModel)]="complaint.email"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Complain</label>
+    <textarea
+      name="description"
+      class="form-control"
+      id="exampleFormControlTextarea1"
+      rows="3"
+      #description="ngModel"
+      [(ngModel)]="complaint.description"
+    ></textarea>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Submit form</button>
+  </div>
+  <!-- <input type="text" name="nm" ngModel />
+  <button type="submit">Submit</button> -->
+</form>
