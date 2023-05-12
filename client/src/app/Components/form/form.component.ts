@@ -22,7 +22,8 @@ export class FormComponent {
     if(userPost.valid){
     this.complaintService.AddComplaint(this.complaint).subscribe(res =>{
       if(res.status===201){
-        this.router.navigate(['/login']);
+        window.alert('Registered Successfully!');
+        this.router.navigate(['/check']);
       }
     })
   }

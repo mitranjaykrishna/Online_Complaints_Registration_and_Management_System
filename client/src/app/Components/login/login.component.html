@@ -1,47 +1,36 @@
 <section class="vh-100">
-  <div class="container py-5 h-100">
-    <div class="row d-flex align-items-center justify-content-center h-100">
-      <div class="col-md-8 col-lg-7 col-xl-6">
-        <img
-          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-          class="img-fluid"
-          alt="Phone image"
-        />
-      </div>
-      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-        <h1 class="m-5">Admin Login</h1>
-        <form #loginPost="ngForm" (ngSubmit)="onLogin(loginPost)">
-          <!-- Email input -->
+    <div class="container py-5 h-100">
+      <div class="row d-flex align-items-center justify-content-center h-100">
+        <div class="col-md-8 col-lg-7 col-xl-6">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
+            class="img-fluid" alt="Phone image">
+        </div>
+        <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+      <form [formGroup]="regForm" #r="ngForm" (ngSubmit)="onSubmit(r.value)" class="form">
+          <h2 class="heading text-center">Login Form</h2>
           <div class="form-outline mb-4">
-            <input
-              type="email"
-              name="email"
-              id="form1Example13"
-              class="form-control form-control-lg"
-              #email="ngModel"
-              [(ngModel)]="login.email"
-            />
-            <label class="form-label" for="form1Example13">Email address</label>
+              <label for="email">Email</label>
+              <input placeholder="Enter email" type="text" class="form-control" id="email" formControlName="email" required>
+              <div *ngIf="regForm.controls['email'].touched && regForm.controls['email']?.['errors']">
+                  <div *ngIf="regForm.controls['email']?.['errors']?.['required']" class="error-message text-danger">
+                      Email is required
+                  </div>
+              </div>
           </div>
-
-          <!-- Password input -->
           <div class="form-outline mb-4">
-            <input
-              type="password"
-              name="password"
-              id="form1Example23"
-              class="form-control form-control-lg"
-              #password="ngModel"
-              [(ngModel)]="login.password"
-            />
-            <label class="form-label" for="form1Example23">Password</label>
+              <label for="password">Password</label>
+              <input placeholder="Enter password" type="text" class="form-control" id="password" formControlName="password" required>
+              <div *ngIf="regForm.controls['password'].touched && regForm.controls['password']?.['errors']">
+                  <div *ngIf="regForm.controls['password']?.['errors']?.['required']"
+                      class="error-message text-danger">
+                      Password is required
+                  </div>
+              </div>
           </div>
-          <!-- Submit button -->
-          <button type="submit" class="btn btn-primary btn-lg btn-block">
-            Sign in
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
+          <button type="submit" class="btn btn-primary mt-4 w-100" [disabled]="regForm.invalid">Sign In</button>
+          <div class="mt-2"><a routerLink="/signup" class="mt-2">Admin Creation? click here</a></div>
+      </form>
+</div>
+</div>
+</div>
 </section>
